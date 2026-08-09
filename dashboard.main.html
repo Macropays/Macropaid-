@@ -1,9 +1,0 @@
-<script>
-    // Load balance from storage
-    let balance = parseFloat(localStorage.getItem('balance')) || 0;
-    document.getElementById('balance').innerText = '$' + balance.toFixed(2);
-    
-    // Also update Naira: $1 = ₦1500
-    let naira = balance * 1500;
-    document.querySelector('.balance-card h3').innerText = '₦' + naira.toLocaleString();
-</script>
