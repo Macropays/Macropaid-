@@ -1,9 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Macropaid - Digital Bank</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  background: linear-gradient(135deg, #0a1a2a 0%, #c0c0c0 100%);
+  color: white;
+  font-family: Arial;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+.box{
+  background: rgba(10,26,42,0.9);
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid silver;
+  box-shadow: 0 0 20px silver;
+}
+h1{color: #00aaff;}
+h2{color: silver;}
+input, button{
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid silver;
+  font-size: 16px;
+}
+button{
+  background: #00aaff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover{background: #0088cc;}
+.balance{
+  font-size: 32px;
+  color: #00ff88;
+  font-weight: bold;
+}
+.error{color: red; display: none;}
+#dashboard{display: none;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div class="box" id="login">
+  <h1>Macropaid</h1>
+  <h2>Login</h2>
+  <input type="text" id="email" placeholder="Enter Email">
+  <input type="password" id="pass" placeholder="Enter Password">
+  <button onclick="login()">Login</button>
+  <p class="error" id="loginError">Wrong email or password!</p>
+</div>
+
+<!-- DASHBOARD PAGE -->
+<div class="box" id="dashboard">
+  <h1>Welcome to Macropaid</h1>
+  <h2>Your Balance</h2>
+  <p class="balance">$12,540.75</p>
+  
+  <button onclick="showError('Send Money')">Send Money</button>
+  <button onclick="showError('Withdraw')">Withdraw</button>
+  <button onclick="showError('Buy Airtime')">Buy Airtime</button>
+  <button onclick="showError('Transaction History')">Transaction History</button>
+  
+  <p class="error" id="btnError"></p>
+  <br><button onclick="logout()" style="background: silver; color: black;">Logout</button>
+</div>
+
 <script>
-    // Load balance from storage
-    let balance = parseFloat(localStorage.getItem('balance')) || 0;
-    document.getElementById('balance').innerText = '$' + balance.toFixed(2);
-    
-    // Also update Naira: $1 = ₦1500
-    let naira = balance * 1500;
-    document.querySelector('.balance-card h3').innerText = '₦' + naira.toLocaleString();
+function login(){
+  let email = document.getElementById('email').value;
+  let pass = document.getElementById('pass').value;
+  if(email != "" && pass != ""){
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+function logout(){
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('login').style.display = 'block';
+}
+function showError(btnName){
+  document.getElementById('btnError').innerText = btnName + " - Coming Soon! This feature is locked for now.";
+  document.getElementById('btnError').style.display = 'block';
+}
 </script>
+
+</body>
+</html>
