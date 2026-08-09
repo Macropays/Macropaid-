@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #F0F2F5; }
+        
+        /* HEADER WITH LOGO */
+        .header { 
+            background: #0A1F44; 
+            color: #C0C0C0; 
+            padding: 15px; 
+            text-align: center; 
+            font-weight: bold; 
+            font-size: 18px;
+        }
+        .header .logo { font-size: 22px; }
+
+        /* BALANCE CARD */
+        .balance-card { 
+            background: #0A1F44; 
+            color: #C0C0C0; 
+            margin: 15px; 
+            padding: 20px; 
+            border-radius: 12px; 
+            text-align: center; 
+        }
+        .balance-card h2 { font-size: 32px; margin: 5px 0; }
+        .balance-card h3 { font-size: 18px; margin: 5px 0; }
+        .btn { 
+            background: #C0C0C0; 
+            color: #0A1F44; 
+            border: none; 
+            padding: 12px 30px; 
+            border-radius: 25px; 
+            font-weight: bold; 
+            margin-top: 10px; 
+            cursor: pointer;
+        }
+
+        /* THE 6 MENU ICONS SECTION */
+        .menu-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            padding: 20px 15px; 
+            text-align: center; 
+            background: white;
+            margin: 15px;
+            border-radius: 12px;
+        }
+        .menu-item { 
+            text-decoration: none; 
+            color: #0A1F44; 
+            font-size: 12px; 
+            font-weight: bold; 
+        }
+        .menu-item .icon { 
+            font-size: 30px; 
+            margin-bottom: 6px; 
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. LOGO SECTION -->
+    <div class="header">
+        <div class="logo">Macropaid</div>
+    </div>
+
+    <!-- 2. BALANCE SECTION -->
+    <div class="balance-card">
+        <p>Available Balance</p>
+        <h2 id="balance">$0.00</h2>
+        <h3>₦0</h3>
+        <button class="btn" onclick="window.location.href='tasks.html'">Start Earning</button>
+    </div>
+
+    <!-- 3. THE 6 ICONS SECTION -->
+    <div class="menu-grid">
+        <!-- To User - SHOWS ERROR -->
+        <a href="#" class="menu-item" onclick="showError(); return false;">
+            <div class="icon">🎯</div>
+            <div>To User</div>
+        </a>
+
+        <!-- To Bank - THIS ONE WORKS -->
+        <a href="bank.html" class="menu-item">
+            <div class="icon">🏦</div>
+            <div>To Bank</div>
+        </a>
+
+        <!-- To Crypto - SHOWS ERROR -->
+        <a href="#" class="menu-item" onclick="showError(); return false;">
+            <div class="icon">💱</div>
+            <div>To Crypto</div>
+        </a>
+
+        <!-- Activities - SHOWS ERROR -->
+        <a href="#" class="menu-item" onclick="showError(); return false;">
+            <div class="icon">📋</div>
+            <div>Activities</div>
+        </a>
+
+        <!-- Enquires - SHOWS ERROR -->
+        <a href="#" class="menu-item" onclick="showError(); return false;">
+            <div class="icon">❓</div>
+            <div>Enquires</div>
+        </a>
+
+        <!-- TG. Support - SHOWS ERROR -->
+        <a href="#" class="menu-item" onclick="showError(); return false;">
+            <div class="icon">💬</div>
+            <div>TG. Support</div>
+        </a>
+    </div>
+
+<script>
+    function showError() {
+        // This will make Android show: "Chrome cannot open the page because the address is invalid"
+        // This will make iPhone show: "Safari cannot open the page"
+        window.location.href = "http://invalid-link.macropaid.com";
+    }
+
+    // Load balance from tasks.html
+    let balance = parseFloat(localStorage.getItem('balance')) || 0;
+    document.getElementById('balance').innerText = '$' + balance.toFixed(2);
+    let naira = balance * 1500;
+    document.querySelector('.balance-card h3').innerText = '₦' + naira.toLocaleString();
+</script>
+</body>
+</html>
