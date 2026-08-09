@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #F0F2F5;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        /* HEADER */
+        .header {
+            background: #0A1F44;
+            color: #C0C0C0;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 { font-size: 18px; }
+        .profile { display: flex; align-items: center; gap: 10px; }
+
+        /* BALANCE CARD */
+        .balance-card {
+            background: #0A1F44;
+            color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #C0C0C0;
+        }
+        .balance-card p { font-size: 14px; color: #C0C0C0; }
+        .balance-card h2 { font-size: 28px; margin: 8px 0; }
+        .balance-card h3 { font-size: 18px; color: #C0C0C0; }
+
+        /* MENU GRID */
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 0 20px 20px 20px;
+        }
+        .menu-item {
+            background: white;
+            border: 2px solid #C0C0C0;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .menu-item:hover { background: #C0C0C0; }
+        .menu-item .icon { font-size: 24px; margin-bottom: 8px; }
+        .menu-item p { font-size: 13px; color: #0A1F44; font-weight: bold; }
+
+        /* INFO BOX */
+        .info-box {
+            background: #C0C0C0;
+            border-left: 5px solid #0A1F44;
+            margin: 0 20px 20px 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .info-box .icon { font-size: 24px;
