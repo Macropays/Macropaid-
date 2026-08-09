@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Funds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #F0F2F5; }
+        
+        .header {
+            background: linear-gradient(135deg, #C00000, #8B0000);
+            color: white; text-align: center; padding: 25px 15px;
+        }
+        .header h1 { font-size: 20px; font-weight: bold; }
+        .header p { font-size: 12px; opacity: 0.9; margin-top: 4px; }
+
+        .container { padding: 15px; }
+        .balance-box {
+            background: #FFE5E5; border-radius: 12px; padding: 20px;
+            text-align: center; margin-bottom: 20px; border: 1px solid #FFCCCC;
+        }
+        .balance-box h2 { color: #C00000; font-size: 28px; }
+        .balance-box p { color: #333; font-size: 14px; margin-top: 4px; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; color: #0A1F44; font-weight: bold; font-size: 13px; margin-bottom: 6px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px; border: 1px solid #C0C0C0; border-radius: 8px;
+            background: white; font-size: 14px; color: #333;
+        }
+        .input-dollar { position: relative; }
+        .input-dollar span { position: absolute; left: 12px; top: 12px; color: #666; }
+
+        .btn-proceed {
+            width: 100%; background: #C0C0C0; color: white; border: none;
+            padding: 14px; border-radius: 10px; font-weight: bold; font-size: 15px;
+            margin-top: 10px; cursor: not-allowed;
+        }
+        .footer-text { text-align: center; font-size: 11px; color: #666; margin-top: 15px; }
+        .footer-text span { color: #C00000; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Withdraw Funds</h1>
+        <p>Fast & Secure Payout</p>
+    </div>
+
+    <div class="container">
+        <div class="balance-box">
+            <h2 id="usd-balance">$74.00</h2>
+            <p id="ngn-balance">₦111,000</p>
+        </div>
+
+        <div class="form-group">
+            <label>Amount to Withdraw</label>
+            <div class="input-dollar">
+                <span>$</span>
+                <input type="number" placeholder="50 - 500" style="padding-left: 25px;">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Account Name</label>
+            <input type="text" placeholder="Full name on account">
+        </div>
+
+        <div class="form-group">
+            <label>Account Number</label>
+            <input type="number" placeholder="Enter account number">
+        </div>
+
+        <div class="form-group">
+            <label>Bank Name</label>
+            <select>
+                <option>First Bank of Nigeria</option>
+                <option>GTBank</option>
+                <option>Access Bank</option>
+                <option>UBA</option>
+                <option>Zenith Bank</option>
+            </select>
+        </div>
+
+        <button class="btn-proceed">Proceed to Payment</button>
+
+        <p class="footer-text">
+            Exchange rate: <span>$1 = ₦1,500</span><br>
+            Minimum withdrawal: $50 • Maximum per request: $500
+        </p>
+    </div>
+
+    <script>
+        // Load balance from localStorage to match dashboard
+        let balance = parseFloat(localStorage.getItem('balance')) || 74;
+        document.getElementById('usd-balance').innerText = '$' + balance.toFixed(2);
+        let naira = balance * 1500;
+        document.getElementById('ngn-balance').innerText = '₦' + naira.toLocaleString();
+    </script>
+</body>
+</html>
